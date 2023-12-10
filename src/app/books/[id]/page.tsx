@@ -1,13 +1,7 @@
 import AddToCart from '@/components/cart/addToCart';
 import BooksSection from '@/components/booksSection';
 import Image from '@/components/image';
-import {
-  getBooks,
-  getBook,
-  getInventory,
-  fetchBooks,
-  getRating,
-} from '@/lib/api/books';
+import { getBooks, getBook, getInventory, getRating } from '@/lib/api/books';
 import Container from '@/components/container';
 import { BOOK_FORMATS } from '@/types';
 import Rating from '@/components/rating';
@@ -61,8 +55,6 @@ export default async function Page({ params }: { params: { id: string } }) {
   };
 
   const booksList = mapBookPricesToBooksList();
-
-  const data = await fetchBooks(1, 6);
 
   const isAlreadyRated = await getRating(book._id, accessToken!);
 
@@ -138,9 +130,7 @@ export default async function Page({ params }: { params: { id: string } }) {
         </section>
 
         <section className="pb-20">
-          <BooksSection category="ai" />
-          <BooksSection category="ai" />
-          <BooksSection category="ai" />
+          <BooksSection category={book.category.name} />
         </section>
       </Container>
     </main>

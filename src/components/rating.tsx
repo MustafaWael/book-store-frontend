@@ -5,6 +5,7 @@ import { useState, useTransition } from 'react';
 import { Button } from './ui/button';
 import { rateBook, updateRating } from '@/actions';
 import { type Rating } from '@/types';
+import toast from 'react-hot-toast';
 
 type RatingProps =
   | {
@@ -49,6 +50,12 @@ export default function Rating({
         const createdRating = await rateBook(bookId, newRating);
         onRatingChange(createdRating);
         if (createdRating?.error) {
+          if (createdRating?.error === 'No access token') {
+            toast.error('You need to be logged in to rate a book');
+            setRating(0);
+            return;
+          }
+
           if (createdRating.error === 'User already rated') {
             const updatedRating = await updateRating(bookId, {
               rating: newRating,

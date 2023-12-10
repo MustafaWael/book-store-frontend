@@ -177,7 +177,7 @@ export const rateBook = async (bookId: string, rating: number) => {
     revalidateTag('ratings');
     return data;
   } catch (error) {
-    console.log(error);
+    if (error instanceof Error) return { error: error.message };
   }
 };
 
@@ -192,7 +192,7 @@ export const updateRating = async (
     revalidateTag('ratings');
     return res;
   } catch (error) {
-    console.log(error);
+    if (error instanceof Error) return { error: error.message };
   }
 };
 

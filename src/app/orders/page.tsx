@@ -26,7 +26,6 @@ export default async function Orders() {
     const _orders: any[] = [];
 
     for (const order of fetchedOrders) {
-      console.log({ orderBooks: order.books });
       const booksList: any[] = [];
       for (const book of order.books) {
         const bookData = (await fetchBook(book.book)) as any;
@@ -58,7 +57,6 @@ export default async function Orders() {
   };
 
   const orders = await mapOrders();
-  console.log({ orders });
 
   return (
     <Container asChild>
@@ -162,7 +160,6 @@ const Book = async ({
   prices: [any];
   title: string;
 }) => {
-  console.log(bookId);
   return (
     <div className="flex flex-col gap-y-1">
       <h3 className="text-lg mb-2">{title}</h3>

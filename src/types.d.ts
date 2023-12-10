@@ -20,12 +20,20 @@ type OrdersResponse = {
   address: string;
 }[];
 
+type Category = {
+  _id: string;
+  name: string;
+  createdBy: string;
+  __v: number;
+};
+
 export type Book = {
   _id: string;
   cover: string;
   title: string;
   author: Author;
   description: string;
+  category: Category;
   summary: string;
   price: Price;
   year: number;
@@ -38,6 +46,7 @@ export type BookResponse = {
   title: string;
   author: Author;
   description: string;
+  category: Category;
   summary: string;
   price: Price;
   year: number;

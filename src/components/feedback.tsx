@@ -56,7 +56,7 @@ export default function Feedback({
                 rating={rating || 0}
                 size={35}
                 starsGap={4}
-                onRatingChange={(rating) => setRatingId(rating._id)}
+                onRatingChange={(rating) => setRatingId(rating?._id)}
               />
             </div>
 
