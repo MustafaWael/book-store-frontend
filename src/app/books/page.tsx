@@ -1,11 +1,10 @@
 import { getBooks, getCategories } from '@/lib/api/books';
-import BookCard from '@/components/bookCard';
 import Link from 'next/link';
 import Container from '@/components/container';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '@/components/ui/label';
-import { Suspense } from 'react';
 import InfiniteLoadBooks from '@/components/infiniteLoadBooks';
+import LoadRestCategories from '@/components/loadRestCategories';
 
 type SearchParams = {
   category?: string;
@@ -20,18 +19,22 @@ type BookFormat = 'paperback' | 'hardcover' | 'ebook';
 
 const bookFormats: BookFormat[] = ['paperback', 'hardcover', 'ebook'];
 
+const LIMIT = 10;
+
 export default async function page({ searchParams }: PageProps) {
   // fetch books by category and format
   const books = await getBooks({
     ...searchParams,
-    pageSize: `10`,
+    pageSize: `${LIMIT}`,
   });
-  const { categories } = await getCategories();
+  const { categories } = await getCategories(1, 50);
 
   const createLink = (_searchParams: SearchParams) => {
     const params = new URLSearchParams({ ...searchParams, ..._searchParams });
     return `/books?${params.toString()}`;
   };
+
+  const firistCategories = categories.slice(0, LIMIT);
 
   return (
     <Container asChild>
@@ -39,7 +42,7 @@ export default async function page({ searchParams }: PageProps) {
         <section className="bg-card p-5 rounded-2xl h-fit min-w-max md:sticky top-[120px] left-0">
           <h3 className="text-xl text-foreground mb-2">Categories</h3>
           <ul className="flex flex-col gap-y-2">
-            {categories.map((category: { name: string; _id: string }) => (
+            {firistCategories.map((category: { name: string; _id: string }) => (
               <li key={category._id}>
                 <Link
                   href={createLink({ category: category.name })}
@@ -62,6 +65,12 @@ export default async function page({ searchParams }: PageProps) {
                 </Link>
               </li>
             ))}
+
+            <LoadRestCategories
+              categories={categories}
+              limit={LIMIT}
+              searchParams={searchParams}
+            />
           </ul>
 
           <h3 className="text-xl text-foreground mb-2 mt-6">Books Formats</h3>
