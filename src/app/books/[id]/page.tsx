@@ -136,25 +136,13 @@ export default async function Page({ params }: { params: { id: string } }) {
             </div>
           </div>
         </section>
-      </Container>
 
-      <section className="pb-20">
-        <BooksSection
-          books={data}
-          pageNumber={data?.currentPage!}
-          category="Paperback"
-        />
-        <BooksSection
-          books={data}
-          pageNumber={data?.currentPage!}
-          category="Paperback"
-        />
-        <BooksSection
-          books={data}
-          pageNumber={data?.currentPage!}
-          category="Paperback"
-        />
-      </section>
+        <section className="pb-20">
+          <BooksSection category="ai" />
+          <BooksSection category="ai" />
+          <BooksSection category="ai" />
+        </section>
+      </Container>
     </main>
   );
 }

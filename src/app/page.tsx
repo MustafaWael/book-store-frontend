@@ -2,7 +2,7 @@ import BooksSection from '@/components/booksSection';
 import Header from '@/components/header';
 import { Testimonial } from '@/components/testimonialCard';
 import TestimonialsSection from '@/components/testimonialsSection';
-import { fetchBooks } from '@/lib/api/books';
+import { getCategories } from '@/lib/api/books';
 
 const testimonials: Testimonial[] = [
   {
@@ -56,28 +56,16 @@ const testimonials: Testimonial[] = [
 ];
 
 export default async function Home() {
-  const data = await fetchBooks(1, 6);
+  const { categories } = await getCategories(1, 3);
 
   return (
     <>
       <Header />
       <main className="w-full pt-[calc(100lvh-150px)] z-20 relative">
         <section className="pb-20">
-          <BooksSection
-            books={data!}
-            pageNumber={data?.currentPage!}
-            category="Paperback"
-          />
-          <BooksSection
-            books={data!}
-            pageNumber={data?.currentPage!}
-            category="Paperback"
-          />
-          <BooksSection
-            books={data!}
-            pageNumber={data?.currentPage!}
-            category="Paperback"
-          />
+          {categories.map((category) => (
+            <BooksSection key={category._id} category={category.name} />
+          ))}
         </section>
         <TestimonialsSection testimonials={testimonials} />
       </main>

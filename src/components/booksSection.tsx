@@ -1,19 +1,15 @@
 import Link from 'next/link';
 import BooksSlider from './booksSlider';
 import { ArrowRightIcon } from 'lucide-react';
-import { BooksResponse } from '@/types';
+import { getBooks } from '@/lib/api/books';
 
 type BooksSectionProps = {
-  books: BooksResponse;
   category: string;
-  pageNumber: number;
 };
 
-export default function BooksSection({
-  books,
-  category,
-  pageNumber,
-}: BooksSectionProps) {
+export default async function BooksSection({ category }: BooksSectionProps) {
+  const books = await getBooks({ category });
+
   return (
     <section className="py-12">
       <div className="flex justify-between items-center text-foreground mb-5 container">
@@ -23,7 +19,7 @@ export default function BooksSection({
           <ArrowRightIcon size={20} />
         </Link>
       </div>
-      <BooksSlider books={books} pageNumber={pageNumber} />
+      <BooksSlider books={books} category={category} />
     </section>
   );
 }

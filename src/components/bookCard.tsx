@@ -16,7 +16,7 @@ export default React.forwardRef<HTMLDivElement, BookCardProps>(
     return (
       <article
         ref={ref}
-        className="bg-card border-border border-4 text-card-foreground rounded-2xl snap-center h-[inherit] flex flex-col"
+        className="w-min bg-card border-border border-4 text-card-foreground rounded-2xl snap-center h-[inherit] flex flex-col"
       >
         {/* image */}
         <section className="px-2.5 pt-2.5 ">
@@ -27,7 +27,7 @@ export default React.forwardRef<HTMLDivElement, BookCardProps>(
             height={161}
             alt={book.title}
             className="object-cover object-center rounded-2xl select-none pointer-events-none"
-            wrapperClassName='flex justify-center'
+            wrapperClassName="flex justify-center"
           />
         </section>
 
@@ -45,10 +45,10 @@ export default React.forwardRef<HTMLDivElement, BookCardProps>(
           {/* author */}
           <p className="text-base md:text-xl mt-2">
             <span className="mr-1">—</span>
-              by{' '}
-              <span className="font-bold text-card-foreground/60 capitalize">
-                {book.author.name}
-              </span>
+            by{' '}
+            <span className="font-bold text-card-foreground/60 capitalize">
+              {book.author.name}
+            </span>
           </p>
 
           {/* Rating  */}

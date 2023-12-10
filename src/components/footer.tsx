@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Container from './container';
 
 export default async function Footer() {
-  const categories = await getCategories();
+  const { categories } = await getCategories();
 
   return (
     <footer className="bg-secondary text-secondary-foreground">

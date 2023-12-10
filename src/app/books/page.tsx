@@ -5,6 +5,7 @@ import Container from '@/components/container';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '@/components/ui/label';
 import { Suspense } from 'react';
+import InfiniteLoadBooks from '@/components/infiniteLoadBooks';
 
 type SearchParams = {
   category?: string;
@@ -21,10 +22,11 @@ const bookFormats: BookFormat[] = ['paperback', 'hardcover', 'ebook'];
 
 export default async function page({ searchParams }: PageProps) {
   // fetch books by category and format
-  const { books } = await getBooks({
+  const books = await getBooks({
     ...searchParams,
+    pageSize: `10`,
   });
-  const categories = await getCategories();
+  const { categories } = await getCategories();
 
   const createLink = (_searchParams: SearchParams) => {
     const params = new URLSearchParams({ ...searchParams, ..._searchParams });
@@ -90,19 +92,11 @@ export default async function page({ searchParams }: PageProps) {
           </ul>
         </section>
 
-        <section className="w-full">
-          <ul className="auto-grid">
-            {books.map((book) => (
-              <li key={book._id} className="h-full">
-                <Suspense
-                  fallback={<div className="text-foreground">Loading...</div>}
-                >
-                  <BookCard book={book} />
-                </Suspense>
-              </li>
-            ))}
-          </ul>
-        </section>
+        <InfiniteLoadBooks
+          books={books}
+          category={searchParams.category}
+          limit={10}
+        />
       </main>
     </Container>
   );

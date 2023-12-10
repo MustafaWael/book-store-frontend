@@ -376,17 +376,25 @@ export const getAuthor = async (authorId: string): Promise<Author> => {
   return data;
 };
 
-export const getCategories = async () => {
-  const res = await fetch(`${BASE_URLS.books}/categories`, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
+export const getCategories = async (page: number = 1, limit: number = 10) => {
+  const res = await fetch(
+    `${BASE_URLS.books}/categories?page=${page}&pageSize=${limit}`,
+    {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      cache: 'no-store',
     },
-    cache: 'no-store',
-  });
+  );
 
   const data = await res.json();
-  return data;
+  return data as {
+    categories: { _id: string; name: string }[];
+    totalCategories: number;
+    currentPage: number;
+    totalPages: number;
+  };
 };
 
 export const rateBook = async (

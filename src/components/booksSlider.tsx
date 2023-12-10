@@ -7,13 +7,14 @@ import useInfiniteBooks from '@/hooks/useBooks';
 
 type BooksSliderProps = {
   books: BooksResponse;
-  pageNumber: number;
+  category?: string;
 };
 
-export default function BooksSlider({ books }: BooksSliderProps) {
+export default function BooksSlider({ books, category }: BooksSliderProps) {
   const { data, isFetching, hasNextPage, lastElementRef } = useInfiniteBooks({
     initialBooks: books,
     limit: 6,
+    category,
   });
 
   const items = data.pages.map((page, index) => {
@@ -31,7 +32,7 @@ export default function BooksSlider({ books }: BooksSliderProps) {
         className={`flex gap-x-8 overflow-x-auto will-change-scroll remove-scrollbar scroll-smooth items-start xl:mask-slider`}
       >
         {items}
-        {isFetching && (
+        {isFetching && hasNextPage && (
           <div className="text-foreground my-auto">
             <Icons.Loader2 className="animate-spin" />
           </div>

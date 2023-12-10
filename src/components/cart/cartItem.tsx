@@ -49,7 +49,7 @@ export default function CartItem({
             {formatPrice(price)}
           </span>
         </div>
-        <div className="flex gap-2 items-center">
+        <div className="flex gap-2 items-center justify-center flex-wrap xs:justify-start xs:flex-nowrap">
           <QuantityUpdater
             id={id}
             quantity={quantity}

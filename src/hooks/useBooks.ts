@@ -1,14 +1,17 @@
-import { fetchBooks } from '@/lib/api/books';
+import { fetchBooks, getBooks } from '@/lib/api/books';
+import { sleep } from '@/lib/utils';
 import { BooksResponse } from '@/types';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { useCallback, useRef } from 'react';
 
 export default function useInfiniteBooks({
   initialBooks,
-  limit = 6,
+  limit = 3,
+  category,
 }: {
   initialBooks: BooksResponse;
   limit?: number;
+  category?: string;
 }) {
   const {
     data,
@@ -20,8 +23,15 @@ export default function useInfiniteBooks({
     error,
     isPlaceholderData,
   } = useInfiniteQuery({
-    queryKey: ['books'],
-    queryFn: ({ pageParam }) => fetchBooks(pageParam, limit),
+    queryKey: ['books', category],
+    queryFn: async ({ pageParam }) => {
+      await sleep(1000);
+      return getBooks({
+        page: `${pageParam}`,
+        pageSize: `${limit}`,
+        category: category || '',
+      });
+    },
     initialPageParam: 1,
     initialData: {
       pages: [initialBooks],
@@ -37,7 +47,7 @@ export default function useInfiniteBooks({
   const observerRef = useRef<IntersectionObserver>();
 
   const lastElementRef = useCallback(
-    (node: HTMLDivElement) => {
+    (node: any) => {
       if (isFetching) return;
       if (observerRef.current) observerRef.current.disconnect();
 
