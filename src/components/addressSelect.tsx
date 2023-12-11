@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import CreateOrderButton from './buttons/createOrderButton';
 import { Address } from '@/types';
 import { Button } from './ui/button';
+import { cn } from '@/lib/utils';
 
 type AddressId = Address['_id'];
 
@@ -36,32 +37,39 @@ export default function AddressSelect({ addresses }: AddressSelectProps) {
 
   return (
     <div className="flex gap-4 flex-wrap">
-      <div className="w-full flex gap-4 flex-wrap justify-center p-8">
+      <div className="w-full grid grid-cols-2 gap-4">
         {addresses.map((address) => {
           const isSelected = selectedAddress === address._id;
-          // const buttonClass = cn(
-          //   'w-full',
-          //   'flex',
-          //   'items-center',
-          //   'justify-center',
-          //   'p-4',
-          //   'rounded-2xl',
-          //   'bg-card',
-          //   'text-card-foreground',
-          //   'transition',
-          //   'duration-300',
-          //   'ease-in-out',
-          //   isSelected ? 'bg-primary' : 'hover:bg-primary',
-          //   isSelected ? 'text-white' : 'hover:text-white',
-          // );
+          const buttonClass = cn(
+            'w-full',
+            'h-auto',
+            'flex',
+            'items-start',
+            'justify-start',
+            'p-4',
+            'rounded-2xl',
+            'bg-card',
+            'text-card-foreground',
+            'transition',
+            'duration-300',
+            'ease-in-out',
+            'bg-slate-800',
+            isSelected
+              ? 'bg-primary text-white outline outline-outline'
+              : 'hover:bg-primary hover:text-white',
+          );
 
           return (
             <Button
               onClick={() => handleAddressSelect(address._id)}
               key={address._id}
-              variant={isSelected ? 'secondary' : 'default'}
+              className={buttonClass}
             >
-              <div>{address.fullName}</div>
+              <div className="flex flex-col justify-start items-start">
+                <span className='text-3xl'>{address.fullName}</span>
+                <span>address line 1: {address.addressLine1}</span>
+                <span>address line 2: {address.addressLine2}</span>
+              </div>
             </Button>
           );
         })}

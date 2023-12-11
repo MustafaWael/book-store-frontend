@@ -9,7 +9,7 @@ import {
 } from '@/lib/utils';
 import { cookies } from 'next/headers';
 import { getUser } from '@/lib/api/auth';
-import { Rating } from '@/types';
+import { Address, Rating } from '@/types';
 
 export const addToCart = async (bookId: string, format: string) => {
   try {
@@ -104,17 +104,12 @@ export const deleteOrdersByAddressId = async (addressId: string) => {
   }
 };
 
-export const createShippingAddress = async (formData: FormData) => {
-  const form = formDataToObject<ShippingAddress>(formData);
-  const { error, value } = validateShippingAddress(form);
-
-  if (error) return { validationError: mapJoiErrors(error) };
-
+export const createShippingAddress = async (address: any) => {
   try {
     const accessToken = cookies().get('access_token')?.value;
     if (!accessToken) throw new Error('No access token');
 
-    const data = await appAPI.createShippingAddress(value, accessToken);
+    const data = await appAPI.createShippingAddress(address, accessToken);
     revalidateTag('addresses');
     return data;
   } catch (error) {
@@ -122,17 +117,12 @@ export const createShippingAddress = async (formData: FormData) => {
   }
 };
 
-export const updateShippingAddress = async (id: string, formData: FormData) => {
-  const form = formDataToObject<ShippingAddress>(formData);
-  const { error, value } = validateShippingAddress(form);
-
-  if (error) return { validationError: mapJoiErrors(error) };
-
+export const updateShippingAddress = async (id: string, address: any) => {
   try {
     const accessToken = cookies().get('access_token')?.value;
     if (!accessToken) throw new Error('No access token');
 
-    const data = await appAPI.updateShippingAddress(id, value, accessToken);
+    const data = await appAPI.updateShippingAddress(id, address, accessToken);
     revalidateTag('addresses');
     return data;
   } catch (error) {

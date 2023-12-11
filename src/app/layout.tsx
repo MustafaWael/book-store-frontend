@@ -7,7 +7,7 @@ import ShoppingCart from '@/components/shoppingCart';
 import JotaiProvider from '@/components/providers/jotai';
 import { Toaster } from 'react-hot-toast';
 import CreateAddressModal from '@/components/modals/createAddressModal';
-import ShippingAddressForm from '@/components/forms/shippingAddress/shippingAddress';
+import { ShippingAddressForm } from '@/components/forms/clientForms/shippingAddress';
 import ReactQueryProvider from '@/components/providers/reactQuery';
 import NextTopLoader from 'nextjs-toploader';
 import { ThemeProvider } from '@/components/providers/theme-provider';
@@ -55,7 +55,7 @@ export default function RootLayout({
                 showSpinner={false}
               />
               <CreateAddressModal>
-                <ShippingAddressForm actionType="create" />
+                <ShippingAddressForm actionType='create'/>
               </CreateAddressModal>
               <ShoppingCart />
               <Navbar />

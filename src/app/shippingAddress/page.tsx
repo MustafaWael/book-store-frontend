@@ -1,7 +1,6 @@
 import { getShippingAddresses } from '@/lib/api/books';
 import { Address } from '../profile/page';
 import AddressSelect from '@/components/addressSelect';
-import Link from 'next/link';
 import { cookies } from 'next/headers';
 import Container from '@/components/container';
 import { OpenCreateAddressModal } from '@/components/modals/createAddressModal';

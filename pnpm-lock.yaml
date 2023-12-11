@@ -53,6 +53,9 @@ dependencies:
   '@types/react-dom':
     specifier: 18.2.7
     version: 18.2.7
+  '@types/validator':
+    specifier: ^13.11.7
+    version: 13.11.7
   autoprefixer:
     specifier: 10.4.14
     version: 10.4.14(postcss@8.4.27)
@@ -131,6 +134,9 @@ dependencies:
   typescript:
     specifier: 5.1.6
     version: 5.1.6
+  validator:
+    specifier: ^13.11.0
+    version: 13.11.0
   zod:
     specifier: ^3.22.4
     version: 3.22.4
@@ -1625,6 +1631,10 @@ packages:
     dependencies:
       '@types/node': 20.4.9
     dev: true
+
+  /@types/validator@13.11.7:
+    resolution: {integrity: sha512-q0JomTsJ2I5Mv7dhHhQLGjMvX0JJm5dyZ1DXQySIUzU1UlwzB8bt+R6+LODUbz0UDIOvEzGc28tk27gBJw2N8Q==}
+    dev: false
 
   /@typescript-eslint/parser@6.12.0(eslint@8.46.0)(typescript@5.1.6):
     resolution: {integrity: sha512-s8/jNFPKPNRmXEnNXfuo1gemBdVmpQsK1pcu+QIvuNJuhFzGrpD7WjOcvDc/+uEdfzSYpNu7U/+MmbScjoQ6vg==}
@@ -4377,6 +4387,11 @@ packages:
   /uuid@8.3.2:
     resolution: {integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==}
     hasBin: true
+    dev: false
+
+  /validator@13.11.0:
+    resolution: {integrity: sha512-Ii+sehpSfZy+At5nPdnyMhx78fEoPDkR2XW/zimHEL3MyGJQOCQ7WeP20jPYRz7ZCpcKLB21NxuXHF3bxjStBQ==}
+    engines: {node: '>= 0.10'}
     dev: false
 
   /watchpack@2.4.0:
