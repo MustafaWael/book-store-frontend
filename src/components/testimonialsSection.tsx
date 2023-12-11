@@ -11,7 +11,7 @@ export default function TestimonialsSection({
   return (
     <section className="bg-secondary py-20">
       <h2 className="text-2xl md:text-3xl mb-12 text-center text-secondary-foreground">
-        Testimonials
+        What our customers say
       </h2>
 
       <Container asChild>

@@ -7,50 +7,50 @@ import { getCategories } from '@/lib/api/books';
 const testimonials: Testimonial[] = [
   {
     content:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
+      'I absolutely love the variety of books available on this platform. The user-friendly interface makes it easy to discover new titles and authors. Highly recommended!',
     user: {
-      name: 'John Doe',
-      image: '/Ellipse.png',
+      name: 'Alice Johnson',
+      image: '/alice_profile.jpg',
     },
   },
   {
     content:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
+      'The quick delivery and excellent packaging exceeded my expectations. I received my order in perfect condition. The attention to detail is commendable.',
     user: {
-      name: 'John Doe',
-      image: '/Ellipse.png',
+      name: 'David Smith',
+      image: '/david_profile.jpg',
     },
   },
   {
     content:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
+      "The book recommendations based on my preferences are spot-on. It's like the app knows exactly what I like to read. Kudos to the recommendation algorithm!",
     user: {
-      name: 'John Doe',
-      image: '/Ellipse.png',
+      name: 'Emily Thompson',
+      image: '/emily_profile.jpg',
     },
   },
   {
     content:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
+      'The customer support team is responsive and helpful. I had a query about my order, and they resolved it promptly. Great service!',
     user: {
-      name: 'John Doe',
-      image: '/Ellipse.png',
+      name: 'Michael Davis',
+      image: '/michael_profile.jpg',
     },
   },
   {
     content:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
+      'The reading community here is fantastic. I enjoy participating in discussions and sharing my thoughts with fellow book enthusiasts. A great platform for bibliophiles!',
     user: {
-      name: 'John Doe',
-      image: '/Ellipse.png',
+      name: 'Sophia Brown',
+      image: '/sophia_profile.jpg',
     },
   },
   {
     content:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
+      "The app's layout is intuitive, and the search functionality makes it easy to find specific genres or authors. It has become my go-to place for buying books online.",
     user: {
-      name: 'John Doe',
-      image: '/Ellipse.png',
+      name: 'Ryan Wilson',
+      image: '/ryan_profile.jpg',
     },
   },
 ];
