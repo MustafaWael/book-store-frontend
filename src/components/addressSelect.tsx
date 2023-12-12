@@ -37,7 +37,7 @@ export default function AddressSelect({ addresses }: AddressSelectProps) {
 
   return (
     <div className="flex gap-4 flex-wrap">
-      <div className="w-full grid grid-cols-2 gap-4">
+      <div className="w-full grid gird-cols-1 sm:grid-cols-2 gap-4">
         {addresses.map((address) => {
           const isSelected = selectedAddress === address._id;
           const buttonClass = cn(

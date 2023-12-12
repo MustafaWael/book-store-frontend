@@ -1,7 +1,7 @@
 import { State } from '@/components/forms/shippingAddress/shippingAddress';
 
 export const getCountryFromIP = async () => {
-  const res = await fetch('https://ip-api.com/json');
+  const res = await fetch('http://ip-api.com/json');
   const data = await res.json();
   return data.country;
 };

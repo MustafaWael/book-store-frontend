@@ -26,7 +26,7 @@ export default async function ShippingAddressForm({
   actionType,
   address,
 }: ShippingAddressFormProps) {
-  const country = await getCountryFromIP();
+  const country = 'egypt';
   const states = await getCountryStates(country);
   const cities = await getCountryCities(
     country,
@@ -37,7 +37,7 @@ export default async function ShippingAddressForm({
     <form className="flex flex-col gap-y-6">
       <div className="flex flex-col">
         <Label className="mb-3" htmlFor="fullName">
-          Name
+          Fullname
         </Label>
         <Input
           type="text"
@@ -126,7 +126,7 @@ export default async function ShippingAddressForm({
         {actionType === 'create' ? (
           <CreateShippingAddressButton />
         ) : (
-          <div className='flex gap-x-2'>
+          <div className="flex gap-x-2">
             {/* <DeleteShippingAddressButton addressId={address?._id!} /> */}
             <UpdateShippingAddressButton addressId={address?._id!} />
           </div>

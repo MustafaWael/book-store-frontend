@@ -1,4 +1,5 @@
 import Joi from 'joi';
+import validator from 'validator';
 
 const loginSchema = Joi.object({
   email: Joi.string()
@@ -88,7 +89,9 @@ export const validateChangeUserDetails = (details: ChangeUserDetails) => {
 };
 
 export const forgotPasswordSchema = Joi.object({
-  email: Joi.string().email({ tlds: { allow: false } }).required(),
+  email: Joi.string()
+    .email({ tlds: { allow: false } })
+    .required(),
 });
 
 export type ForgotPasswordDetails = {
@@ -128,9 +131,19 @@ const shippingAddressSchema = Joi.object({
   addressLine2: Joi.string().optional(),
   city: Joi.string().required(),
   state: Joi.string().required(),
-  postalCode: Joi.string().required(),
+  postalCode: Joi.string().custom((value, helpers) => {
+    if (!validator.isPostalCode(value, 'any')) {
+      return helpers.message({ custom: 'Invalid postal code' });
+    }
+    return value;
+  }),
   country: Joi.string().required(),
-  phoneNumber: Joi.string().required(),
+  phoneNumber: Joi.string().custom((value, helpers) => {
+    if (!validator.isMobilePhone(value, "ar-EG")) {
+      return helpers.message({ custom: 'Invalid phone number' });
+    }
+    return value;
+  })
 }).options({ stripUnknown: true });
 
 export type ShippingAddress = {

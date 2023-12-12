@@ -14,7 +14,7 @@ import Container from '@/components/container';
 import { OpenCreateAddressModal } from '@/components/modals/createAddressModal';
 import Link from 'next/link';
 import { buttonVariants } from '@/components/ui/button';
-import { ShippingAddressForm } from '@/components/forms/clientForms/shippingAddress';
+import ShippingAddressForm from '@/components/forms/shippingAddress/shippingAddress';
 
 export type Address = {
   _id: string;

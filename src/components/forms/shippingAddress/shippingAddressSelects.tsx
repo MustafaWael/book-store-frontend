@@ -63,7 +63,7 @@ export default function ShippingAddressSelects({
       <FormSelect
         label="State"
         name="state"
-        options={states.map((state) => state.name)}
+        options={states?.map((state) => state.name)}
         onChange={(value) => onStateChange(value)}
         defaultValue={defaultState || states[0].name}
       />

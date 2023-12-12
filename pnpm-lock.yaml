@@ -44,6 +44,9 @@ dependencies:
   '@tanstack/react-query':
     specifier: ^5.8.2
     version: 5.8.4(react-dom@18.2.0)(react@18.2.0)
+  '@types/joi-phone-number':
+    specifier: ^5.0.8
+    version: 5.0.8
   '@types/node':
     specifier: 20.4.9
     version: 20.4.9
@@ -80,6 +83,12 @@ dependencies:
   joi:
     specifier: ^17.11.0
     version: 17.11.0
+  joi-phone-number:
+    specifier: ^5.1.1
+    version: 5.1.1
+  joi-postalcode:
+    specifier: ^2.0.0
+    version: 2.0.0
   jotai:
     specifier: ^2.4.3
     version: 2.5.1(@types/react@18.2.19)(react@18.2.0)
@@ -1585,6 +1594,13 @@ packages:
     resolution: {integrity: sha512-XW/Aa8APYr6jSVVA1y/DEIZX0/GMKLEVekNG727R8cs56ahETkRAy/3DR7+fJyh7oUgGwNQaRfXCun0+KbWY7Q==}
     dev: false
 
+  /@types/joi-phone-number@5.0.8:
+    resolution: {integrity: sha512-QK94pyC2DbSh10JIIsRhyJ6zAyA7MNXmSCCFjMsQOfceKabJWDdll4L3NYOp3NsX3yuU0KaxbbIPMxYcBalAcA==}
+    dependencies:
+      '@types/node': 20.4.9
+      joi: 17.11.0
+    dev: false
+
   /@types/js-cookie@2.2.7:
     resolution: {integrity: sha512-aLkWa0C0vO5b4Sr798E26QgOkss68Un0bLjs7u9qxzPT5CG+8DuNTffWES58YzJs3hrVAOs1wonycqEBqNJubA==}
     dev: false
@@ -2128,6 +2144,10 @@ packages:
 
   /detect-node-es@1.1.0:
     resolution: {integrity: sha512-ypdmJU/TbBby2Dxibuv7ZLW3Bs1QEmM7nHjEANfohJLvE0XVujisn1qPJcZxg+qDucsr+bP6fLD1rPS3AhJ7EQ==}
+    dev: false
+
+  /detect-node@2.1.0:
+    resolution: {integrity: sha512-T0NIuQpnTvFDATNuHN5roPwSBG83rFsuO+MXXH9/3N1eFbn4wcPjttvjMLEPWJ0RGUYgQE7cGgS3tNxbqCGM7g==}
     dev: false
 
   /didyoumean@1.2.2:
@@ -2787,6 +2807,11 @@ packages:
       csstype: 3.1.2
     dev: false
 
+  /google-libphonenumber@3.2.27:
+    resolution: {integrity: sha512-et3QlrfWemNPhyUfXZmJG8TfzitfAN71ygNI15+B35zNge/7vyZxkpDsc13oninkf8RAtN2kNEzvMr4L1n3vfQ==}
+    engines: {node: '>=0.10'}
+    dev: false
+
   /gopd@1.0.1:
     resolution: {integrity: sha512-d65bNlIadxvpb/A2abVdlqKqV563juRnZ1Wtk6s1sIR8uNsXR70xqIzVqxVf1eTqDunwT2MkczEeaezCKTZhwA==}
     dependencies:
@@ -2862,6 +2887,10 @@ packages:
     dependencies:
       once: 1.4.0
       wrappy: 1.0.2
+
+  /inherits@2.0.3:
+    resolution: {integrity: sha512-x00IRNXNy63jwGkJmzPigoySHbaqpNuzKbBOmzK+g2OdZpQ9w+sxCN+VSB3ja7IAge2OP2qpfxTjeNcyjmW1uw==}
+    dev: false
 
   /inherits@2.0.4:
     resolution: {integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==}
@@ -3070,6 +3099,19 @@ packages:
   /jiti@1.21.0:
     resolution: {integrity: sha512-gFqAIbuKyyso/3G2qhiO2OM6shY6EPP/R0+mkDbyspxKazh8BXDC5FiFsUjlczgdNz/vfra0da2y+aHrusLG/Q==}
     hasBin: true
+    dev: false
+
+  /joi-phone-number@5.1.1:
+    resolution: {integrity: sha512-sCrH/GP5ShkPTW8jVQXxAVxvgHZ1CQTmAvIp0JGEUaGsPAY5l+ByapIwNJlVsY7LPtCDZW996o5R66+W0nk9qQ==}
+    engines: {node: '>=12.16.0'}
+    dependencies:
+      google-libphonenumber: 3.2.27
+    dev: false
+
+  /joi-postalcode@2.0.0:
+    resolution: {integrity: sha512-YmcYjEl6+IreGQ95aaHqRgP+RPl/38qZLsXI0+reJnrApbFGgiM4m3aRN4aRLplDRsaAOi1n6e4oCRovAqlEvg==}
+    dependencies:
+      postal-codes-js: 2.5.2
     dev: false
 
   /joi@17.11.0:
@@ -3536,6 +3578,13 @@ packages:
     engines: {node: '>=8'}
     dev: false
 
+  /path@0.12.7:
+    resolution: {integrity: sha512-aXXC6s+1w7otVF9UletFkFcDsJeO7lSZBPUQhtb5O0xJe8LtYhj/GxldoL09bBj9+ZmE2hNoHqQSFMN5fikh4Q==}
+    dependencies:
+      process: 0.11.10
+      util: 0.10.4
+    dev: false
+
   /picocolors@1.0.0:
     resolution: {integrity: sha512-1fygroTLlHu66zi26VoTDv8yRgm0Fccecssto+MhsZ0D/DGW2sm8E8AjW7NU5VVTRt5GxbeZ5qBuJr+HyLYkjQ==}
     dev: false
@@ -3553,6 +3602,13 @@ packages:
   /pirates@4.0.6:
     resolution: {integrity: sha512-saLsH7WeYYPiD25LDuLRRY/i+6HaPYr6G1OUlN39otzkSTxKnubR9RTxS3/Kk50s1g2JTgFwWQDQyplC5/SHZg==}
     engines: {node: '>= 6'}
+    dev: false
+
+  /postal-codes-js@2.5.2:
+    resolution: {integrity: sha512-BvhQ/JImkkFpYE0XMH39ag9L+0DnIwywxPyMQKBm+mxSQa5006SVCqD+5998keCbqDicEHdj2Of+wC2THA0h6w==}
+    dependencies:
+      detect-node: 2.1.0
+      path: 0.12.7
     dev: false
 
   /postcss-import@15.1.0(postcss@8.4.27):
@@ -3653,6 +3709,11 @@ packages:
 
   /pretty-format@3.8.0:
     resolution: {integrity: sha512-WuxUnVtlWL1OfZFQFuqvnvs6MiAGk9UNsBostyBOB0Is9wb5uRESevA6rnl/rkksXaGX3GzZhPup5d6Vp1nFew==}
+    dev: false
+
+  /process@0.11.10:
+    resolution: {integrity: sha512-cdGef/drWFoydD1JsMzuFf8100nZl+GT+yacc2bEced5f9Rjk4z+WtFUTBu9PhOi9j/jfmBPu0mMEY4wIdAF8A==}
+    engines: {node: '>= 0.6.0'}
     dev: false
 
   /prop-types@15.8.1:
@@ -4382,6 +4443,12 @@ packages:
 
   /util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
+    dev: false
+
+  /util@0.10.4:
+    resolution: {integrity: sha512-0Pm9hTQ3se5ll1XihRic3FDIku70C+iHUdT/W926rSgHV5QgXsYbKZN8MSC3tJtSkhuROzvsQjAaFENRXr+19A==}
+    dependencies:
+      inherits: 2.0.3
     dev: false
 
   /uuid@8.3.2:
