@@ -79,7 +79,7 @@ const formSchema = z.object({
       console.log({ f });
       const locale = `${f}-${country.cca2}`;
       console.log({ locale });
-      return validator.isMobilePhone(number, 'ar-EG');
+      return validator.isMobilePhone(number, locale as any);
     },
     {
       message: 'invalid phone number.',
