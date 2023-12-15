@@ -1,4 +1,3 @@
-'use client';
 import Container from '@/components/container';
 import ForgotPasswordForm from '@/components/forms/forgotPassword';
 import { Metadata } from 'next';
