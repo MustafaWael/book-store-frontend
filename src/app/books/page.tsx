@@ -5,11 +5,37 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '@/components/ui/label';
 import InfiniteLoadBooks from '@/components/infiniteLoadBooks';
 import LoadRestCategories from '@/components/loadRestCategories';
+import { Metadata } from 'next';
+
+const LIMIT = 10;
 
 type SearchParams = {
   category?: string;
   format?: string;
 };
+
+type Props = {
+  searchParams: SearchParams;
+};
+
+export async function generateMetadata({
+  searchParams: { category },
+}: Props): Promise<Metadata> {
+  const books = await getBooks({
+    pageSize: `${LIMIT}`,
+    category: !!category ? `${category}` : '',
+  });
+
+  return {
+    title: `Bookstore | ${!!category ? category : 'All'} Books`,
+    description: `Books in the ${!!category ? category : 'all'} category`,
+    openGraph: {
+      title: `Bookstore | ${!!category ? category : 'All'}`,
+      description: `Books in the ${!!category ? category : 'all'} category`,
+      images: books.books.map((book) => book.cover),
+    },
+  };
+}
 
 type PageProps = {
   searchParams: SearchParams;
@@ -19,15 +45,18 @@ type BookFormat = 'paperback' | 'hardcover' | 'ebook';
 
 const bookFormats: BookFormat[] = ['paperback', 'hardcover', 'ebook'];
 
-const LIMIT = 10;
-
 export default async function page({ searchParams }: PageProps) {
   // fetch books by category and format
-  const books = await getBooks({
-    ...searchParams,
-    pageSize: `${LIMIT}`,
-  });
-  const { categories } = await getCategories(1, 50);
+  const [booksResponse, categoriesResponse] = await Promise.all([
+    getBooks({
+      ...searchParams,
+      pageSize: `${LIMIT}`,
+    }),
+    getCategories(1, 50),
+  ]);
+
+  const books = booksResponse;
+  const { categories } = categoriesResponse;
 
   const createLink = (_searchParams: SearchParams) => {
     const params = new URLSearchParams({ ...searchParams, ..._searchParams });

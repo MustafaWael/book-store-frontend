@@ -1,5 +1,15 @@
 import Link from 'next/link';
 import SignupForm from '@/components/forms/signupForm';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Bookstore | Signup',
+  description: 'Signup for a Bookstore account',
+  openGraph: {
+    title: 'Bookstore | Signup',
+    description: 'Signup for a Bookstore account',
+  },
+};
 
 export default function SignupPage() {
   return (

@@ -11,10 +11,20 @@ import {
 import { Button } from '@/components/ui/button';
 import { fetchAddress, fetchBook, fetchOrders } from '@/lib/api/books';
 import { ArrowRight } from 'lucide-react';
+import { Metadata } from 'next';
 import { cookies } from 'next/headers';
 import Link from 'next/link';
 
 export const dynamic = 'force-dynamic';
+
+export const metadata: Metadata = {
+  title: 'Bookstore | Orders',
+  description: 'View your orders',
+  openGraph: {
+    title: 'Bookstore | Orders',
+    description: 'View your orders',
+  },
+};
 
 export default async function Orders() {
   const accessToken = cookies().get('access_token')?.value!;

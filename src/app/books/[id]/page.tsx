@@ -9,6 +9,7 @@ import Feedback from '@/components/feedback';
 import Comments from '@/components/comments';
 import { cookies } from 'next/headers';
 import AllFeedbacks from '@/components/modals/allFeedbacks';
+import { Metadata } from 'next';
 
 export async function generateStaticParams() {
   const { books } = await getBooks();
@@ -16,6 +17,25 @@ export async function generateStaticParams() {
   return books.map((book: any) => ({
     id: book._id,
   }));
+}
+
+type Props = {
+  params: { id: string };
+  searchParams: { [key: string]: string | string[] | undefined };
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const book = await getBook(params.id);
+
+  return {
+    title: `Bookstore | ${book.title}`,
+    description: book.summary,
+    openGraph: {
+      title: `Bookstore | ${book.title}`,
+      description: book.summary,
+      images: [book.cover],
+    },
+  };
 }
 
 export default async function Page({ params }: { params: { id: string } }) {

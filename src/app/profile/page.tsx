@@ -15,6 +15,16 @@ import { OpenCreateAddressModal } from '@/components/modals/createAddressModal';
 import Link from 'next/link';
 import { buttonVariants } from '@/components/ui/button';
 import ShippingAddressForm from '@/components/forms/shippingAddress/shippingAddress';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Bookstore | Profile',
+  description: 'View your profile',
+  openGraph: {
+    title: 'Bookstore | Profile',
+    description: 'View your profile',
+  },
+};
 
 export type Address = {
   _id: string;

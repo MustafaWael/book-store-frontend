@@ -4,6 +4,16 @@ import AddressSelect from '@/components/addressSelect';
 import { cookies } from 'next/headers';
 import Container from '@/components/container';
 import { OpenCreateAddressModal } from '@/components/modals/createAddressModal';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Bookstore | Create Order',
+  description: 'Create a new order',
+  openGraph: {
+    title: 'Bookstore | Create Order',
+    description: 'Create a new order',
+  },
+};
 
 export default async function ShippingAddress() {
   const accessToken = cookies().get('access_token')?.value!;
@@ -24,7 +34,11 @@ export default async function ShippingAddress() {
           {/* paragraph that is tells to select your addresses to ship the order to */}
           <p className="text-card-foreground/60 mb-6">
             Select one of your addresses to ship the order to, or{' '}
-            <OpenCreateAddressModal variant={'link'} size={'icon'} className='h-fit'>
+            <OpenCreateAddressModal
+              variant={'link'}
+              size={'icon'}
+              className="h-fit"
+            >
               create
             </OpenCreateAddressModal>{' '}
             a new address.
