@@ -3,6 +3,7 @@ import Header from '@/components/header';
 import { Testimonial } from '@/components/testimonialCard';
 import TestimonialsSection from '@/components/testimonialsSection';
 import { getCategories } from '@/lib/api/books';
+import { Metadata } from 'next';
 
 const testimonials: Testimonial[] = [
   {
@@ -54,6 +55,16 @@ const testimonials: Testimonial[] = [
     },
   },
 ];
+
+export const metadata: Metadata = {
+  title: 'Bookstore | Buy Books Online at Affordable Prices',
+  description: 'Buy books online at affordable prices from Bookstore.',
+  openGraph: {
+    title: 'Bookstore | Buy Books Online at Affordable Prices',
+    description: 'Buy books online at affordable prices from Bookstore.',
+    images: ['/hero-for-light.jpg'],
+  },
+};
 
 export default async function Home() {
   const { categories } = await getCategories(1, 3);
