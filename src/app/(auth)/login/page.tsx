@@ -1,5 +1,15 @@
 import LoginForm from '@/components/forms/loginForm';
+import { Metadata } from 'next';
 import Link from 'next/link';
+
+export const metadata: Metadata = {
+  title: 'Bookstore | Login',
+  description: 'Login to your Bookstore account',
+  openGraph: {
+    title: 'Bookstore | Login',
+    description: 'Login to your Bookstore account',
+  },
+};
 
 export default function LoginPage() {
   return (
