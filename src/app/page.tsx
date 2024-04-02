@@ -67,7 +67,7 @@ export const metadata: Metadata = {
 };
 
 export default async function Home() {
-  const { categories } = await getCategories(1, 3);
+  const { categories } = await getCategories(1, 3).catch(() => ({ categories: [] }));
 
   return (
     <>
